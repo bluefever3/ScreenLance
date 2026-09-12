@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- ── Filter (klasör) tanımları ──────────────────────────────────────── -->
+  <ItemGroup>
+    <Filter Include="App">
+      <UniqueIdentifier>{A1B2C3D4-1111-1111-1111-000000000001}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Capture">
+      <UniqueIdentifier>{A1B2C3D4-1111-1111-1111-000000000002}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OCR">
+      <UniqueIdentifier>{A1B2C3D4-1111-1111-1111-000000000003}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Translation">
+      <UniqueIdentifier>{A1B2C3D4-1111-1111-1111-000000000004}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Overlay">
+      <UniqueIdentifier>{A1B2C3D4-1111-1111-1111-000000000005}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Settings">
+      <UniqueIdentifier>{A1B2C3D4-1111-1111-1111-000000000006}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hotkeys">
+      <UniqueIdentifier>{A1B2C3D4-1111-1111-1111-000000000007}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utils">
+      <UniqueIdentifier>{A1B2C3D4-1111-1111-1111-000000000008}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+
+  <!-- ── .cpp dosyaları ─────────────────────────────────────────────────── -->
+  <ItemGroup>
+    <ClCompile Include="App\main.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="App\Application.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="App\TrayIcon.cpp">
+      <Filter>App</Filter>
+    </ClCompile>
+    <ClCompile Include="Capture\CaptureEngine.cpp">
+      <Filter>Capture</Filter>
+    </ClCompile>
+    <ClCompile Include="Capture\SelectionWindow.cpp">
+      <Filter>Capture</Filter>
+    </ClCompile>
+    <ClCompile Include="OCR\OCREngine.cpp">
+      <Filter>OCR</Filter>
+    </ClCompile>
+    <ClCompile Include="Translation\TranslationEngine.cpp">
+      <Filter>Translation</Filter>
+    </ClCompile>
+    <ClCompile Include="Overlay\OverlayEngine.cpp">
+      <Filter>Overlay</Filter>
+    </ClCompile>
+    <ClCompile Include="Settings\Config.cpp">
+      <Filter>Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="Settings\SettingsWindow.cpp">
+      <Filter>Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="Hotkeys\HotkeyManager.cpp">
+      <Filter>Hotkeys</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\pch.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\Logger.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Utils\Watchdog.cpp">
+      <Filter>Utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+
+  <!-- ── .h dosyaları ───────────────────────────────────────────────────── -->
+  <ItemGroup>
+    <ClInclude Include="Utils\pch.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\Common.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\Logger.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Utils\Watchdog.h">
+      <Filter>Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings\Config.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="Settings\SettingsWindow.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="Capture\CaptureEngine.h">
+      <Filter>Capture</Filter>
+    </ClInclude>
+    <ClInclude Include="Capture\SelectionWindow.h">
+      <Filter>Capture</Filter>
+    </ClInclude>
+    <ClInclude Include="OCR\OCREngine.h">
+      <Filter>OCR</Filter>
+    </ClInclude>
+    <ClInclude Include="Translation\TranslationEngine.h">
+      <Filter>Translation</Filter>
+    </ClInclude>
+    <ClInclude Include="Overlay\OverlayEngine.h">
+      <Filter>Overlay</Filter>
+    </ClInclude>
+    <ClInclude Include="Hotkeys\HotkeyManager.h">
+      <Filter>Hotkeys</Filter>
+    </ClInclude>
+    <ClInclude Include="App\Application.h">
+      <Filter>App</Filter>
+    </ClInclude>
+    <ClInclude Include="App\TrayIcon.h">
+      <Filter>App</Filter>
+    </ClInclude>
+  </ItemGroup>
+
+  <!-- ── Diğer dosyalar ─────────────────────────────────────────────────── -->
+  <ItemGroup>
+    <None Include="vcpkg.json" />
+    <None Include="README.md" />
+  </ItemGroup>
+
+</Project>

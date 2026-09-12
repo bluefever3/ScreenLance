@@ -1,0 +1,16 @@
+// ScreenLance uygulama kaynakları.
+//
+// Bu dosya, uygulamanın .exe'sine bir İKON GÖMER - bu ikon:
+//   - Windows Gezgini'nde .exe dosyasının üzerinde,
+//   - Görev çubuğunda (taskbar) uygulama çalışırken,
+//   - Alt+Tab penceresinde,
+//   - Kurulum/kaldırma listesinde (Programlar ve Özellikler)
+// görünen ikondur. Görev tepsisi (sistem tepsisi) ikonu AYRICA
+// TrayIcon.cpp içinde aynı kaynak ID'siyle (IDI_APPICON) yükleniyor.
+//
+// IDI_APPICON, listedeki TEK ikon kaynağı olduğu için Windows bunu
+// otomatik olarak "birincil" uygulama ikonu olarak kullanır (Explorer'da
+// başka bir şey belirtmeye gerek yok).
+#include "AppResource.h"
+
+IDI_APPICON ICON "..\\Resources\\app.ico"

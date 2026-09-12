@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+  directory.packages.props – NuGet package management
+  Kept for future use. Currently, packages are pulled at latest compatible version.
+  To pin specific versions, add PackageVersion entries below.
+-->
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <!-- Example: to pin a version, uncomment and set:
+  <ItemGroup>
+    <PackageVersion Include="Microsoft.Windows.CppWinRT" Version="2.0.240410.0" />
+  </ItemGroup>
+  -->
+</Project>

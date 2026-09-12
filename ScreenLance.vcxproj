@@ -1,0 +1,218 @@
+<?xml version='1.0' encoding='utf-8'?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" DefaultTargets="Build">
+
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <ProjectGuid>{68C3CA11-0757-4215-80DF-B464B2B5AB0C}</ProjectGuid>
+    <RootNamespace>ScreenLance</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>ScreenLance</ProjectName>
+    <VcpkgEnabled>true</VcpkgEnabled>
+    <VcpkgEnableManifest>true</VcpkgEnableManifest>
+    <VcpkgTriplet>x64-windows</VcpkgTriplet>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v145</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+
+  <PropertyGroup Label="UserMacros" />
+
+  <!-- Version & Platform Info -->
+  <PropertyGroup>
+    <ProjectVersion>1.0.0</ProjectVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <ProductVersion>1.0.0</ProductVersion>
+    <InformationalVersion>1.0.0-release</InformationalVersion>
+    <!-- Minimum Windows version: Windows 11 (build 22000+); tested on 22621 -->
+    <WindowsTargetPlatformMinVersion>10.0.22000</WindowsTargetPlatformMinVersion>
+  </PropertyGroup>
+
+  <!-- vcpkg & NuGet Configuration -->
+  <PropertyGroup>
+    <VcpkgInclude Condition="'$(VcpkgInstalledDir)'!=''">$(VcpkgInstalledDir)x64-windows\include</VcpkgInclude>
+    <VcpkgInclude Condition="'$(VcpkgInclude)'=='' And Exists('$(MSBuildProjectDirectory)\vcpkg_installed\x64-windows\include')">$(MSBuildProjectDirectory)\vcpkg_installed\x64-windows\include</VcpkgInclude>
+    <VcpkgInclude Condition="'$(VcpkgInclude)'=='' And Exists('C:\vcpkg\installed\x64-windows\include')">C:\vcpkg\installed\x64-windows\include</VcpkgInclude>
+
+    <VcpkgLibDebug Condition="'$(VcpkgInstalledDir)'!=''">$(VcpkgInstalledDir)x64-windows\debug\lib</VcpkgLibDebug>
+    <VcpkgLibDebug Condition="'$(VcpkgLibDebug)'=='' And Exists('$(MSBuildProjectDirectory)\vcpkg_installed\x64-windows\debug\lib')">$(MSBuildProjectDirectory)\vcpkg_installed\x64-windows\debug\lib</VcpkgLibDebug>
+    <VcpkgLibDebug Condition="'$(VcpkgLibDebug)'==''">C:\vcpkg\installed\x64-windows\debug\lib</VcpkgLibDebug>
+
+    <VcpkgLibRelease Condition="'$(VcpkgInstalledDir)'!=''">$(VcpkgInstalledDir)x64-windows\lib</VcpkgLibRelease>
+    <VcpkgLibRelease Condition="'$(VcpkgLibRelease)'=='' And Exists('$(MSBuildProjectDirectory)\vcpkg_installed\x64-windows\lib')">$(MSBuildProjectDirectory)\vcpkg_installed\x64-windows\lib</VcpkgLibRelease>
+    <VcpkgLibRelease Condition="'$(VcpkgLibRelease)'==''">C:\vcpkg\installed\x64-windows\lib</VcpkgLibRelease>
+  </PropertyGroup>
+
+  
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>../Utils/pch.h</PrecompiledHeaderFile>
+      <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32_LEAN_AND_MEAN;NOMINMAX;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>
+        $(MSBuildProjectDirectory);
+        $(WindowsSdkDir)Include\$(WindowsSDKVersion)cppwinrt;
+        $(VcpkgInclude);
+        %(AdditionalIncludeDirectories)
+      </AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(VcpkgLibDebug);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d11.lib;d2d1.lib;dwrite.lib;dxgi.lib;dcomp.lib;dwmapi.lib;windowsapp.lib;llama.lib;ggml.lib;ggml-base.lib;ggml-cpu.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+        if not exist "$(OutDir)Models\" mkdir "$(OutDir)Models"
+        if exist "$(MSBuildProjectDirectory)\Models\*.gguf" xcopy /Y /Q "$(MSBuildProjectDirectory)\Models\*.gguf" "$(OutDir)Models\"
+        if exist "$(VcpkgLibDebug)\..\bin\llama.dll" xcopy /Y /Q "$(VcpkgLibDebug)\..\bin\llama*.dll" "$(OutDir)"
+        if exist "$(VcpkgLibDebug)\..\bin\ggml.dll" xcopy /Y /Q "$(VcpkgLibDebug)\..\bin\ggml*.dll" "$(OutDir)"
+      </Command>
+      <Message>Models klasörü oluşturuluyor, model dosyaları ve DLL'ler kopyalanıyor...</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+
+  
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <PreprocessorDefinitions>UNICODE;_UNICODE;WIN32_LEAN_AND_MEAN;NOMINMAX;NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>/utf-8 %(AdditionalOptions)</AdditionalOptions>
+      <PrecompiledHeader>Use</PrecompiledHeader>
+      <PrecompiledHeaderFile>../Utils/pch.h</PrecompiledHeaderFile>
+      <AdditionalIncludeDirectories>
+        $(MSBuildProjectDirectory);
+        $(WindowsSdkDir)Include\$(WindowsSDKVersion)cppwinrt;
+        $(VcpkgInclude);
+        %(AdditionalIncludeDirectories)
+      </AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(VcpkgLibRelease);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>d3d11.lib;d2d1.lib;dwrite.lib;dxgi.lib;dcomp.lib;dwmapi.lib;windowsapp.lib;llama.lib;ggml.lib;ggml-base.lib;ggml-cpu.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+        if not exist "$(OutDir)Models\" mkdir "$(OutDir)Models"
+        if exist "$(MSBuildProjectDirectory)\Models\*.gguf" xcopy /Y /Q "$(MSBuildProjectDirectory)\Models\*.gguf" "$(OutDir)Models\"
+        if exist "$(VcpkgLibRelease)\..\bin\llama.dll" xcopy /Y /Q "$(VcpkgLibRelease)\..\bin\llama*.dll" "$(OutDir)"
+        if exist "$(VcpkgLibRelease)\..\bin\ggml.dll" xcopy /Y /Q "$(VcpkgLibRelease)\..\bin\ggml*.dll" "$(OutDir)"
+      </Command>
+      <Message>Models klasörü oluşturuluyor, model dosyaları ve DLL'ler kopyalanıyor...</Message>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+
+  
+  <ItemGroup>
+    <ClCompile Include="App\main.cpp" />
+    <ClCompile Include="App\Application.cpp" />
+    <ClCompile Include="App\TrayIcon.cpp" />
+    <ClCompile Include="Capture\CaptureEngine.cpp" />
+    <ClCompile Include="Capture\SelectionWindow.cpp" />
+    <ClCompile Include="OCR\OCREngine.cpp" />
+    <ClCompile Include="Translation\TranslationEngine.cpp" />
+    <ClCompile Include="Overlay\OverlayEngine.cpp" />
+    <ClCompile Include="Settings\Config.cpp" />
+    <ClCompile Include="Settings\SettingsWindow.cpp" />
+    <ClCompile Include="Hotkeys\HotkeyManager.cpp" />
+    <ClCompile Include="Utils\pch.cpp">
+      <PrecompiledHeader>Create</PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="Utils\Logger.cpp" />
+    <ClCompile Include="Utils\Watchdog.cpp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ClInclude Include="Utils\pch.h" />
+    <ClInclude Include="Utils\Common.h" />
+    <ClInclude Include="Utils\Logger.h" />
+    <ClInclude Include="Utils\Watchdog.h" />
+    <ClInclude Include="Settings\Config.h" />
+    <ClInclude Include="Settings\SettingsWindow.h" />
+    <ClInclude Include="Capture\CaptureEngine.h" />
+    <ClInclude Include="Capture\SelectionWindow.h" />
+    <ClInclude Include="OCR\OCREngine.h" />
+    <ClInclude Include="Translation\TranslationEngine.h" />
+    <ClInclude Include="Overlay\OverlayEngine.h" />
+    <ClInclude Include="Hotkeys\HotkeyManager.h" />
+    <ClInclude Include="App\Application.h" />
+    <ClInclude Include="App\TrayIcon.h" />
+    <ClInclude Include="App\AppResource.h" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ResourceCompile Include="App\AppResources.rc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="vcpkg.json" />
+    <None Include="README.md" />
+    <None Include="directory.packages.props" />
+    <None Include="Resources\app.ico" />
+  </ItemGroup>
+
+  <!-- NuGet Packages (pulled at latest compatible version) -->
+  <ItemGroup>
+    <!-- Microsoft.Windows.CppWinRT: C++ language projection for Windows Runtime
+         Latest version auto-pulled. To pin version, edit directory.packages.props -->
+    <PackageReference Include="Microsoft.Windows.CppWinRT" />
+  </ItemGroup>
+
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+
+</Project>

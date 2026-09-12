@@ -1,0 +1,10 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg/master/scripts/vcpkg.schema.json",
+  "name": "screenlance",
+  "version-string": "1.0.0",
+  "description": "Offline real-time screen translation overlay",
+  "dependencies": [
+    "llama-cpp",
+    "nlohmann-json"
+  ]
+}
